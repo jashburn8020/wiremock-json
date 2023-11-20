@@ -1,0 +1,15 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "/hello/sun/json"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "jsonBody": {
+      "hello": "sun!"
+    }
+  }
+}

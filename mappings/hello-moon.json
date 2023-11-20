@@ -1,0 +1,13 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "/hello/moon"
+  },
+  "response": {
+    "status": 200,
+    "body": "Hello, moon!",
+    "headers": {
+      "Content-Type": "text/plain"
+    }
+  }
+}
