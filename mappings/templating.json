@@ -1,0 +1,32 @@
+{
+  "metadata": {
+    "description": "Enabling the use of response templating through command line options. Note also the use of 'transformers' in the 2nd mapping."
+  },
+  "mappings": [
+    {
+      "request": {
+        "urlPath": "/templating/notransformer"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "text/plain"
+        },
+        "body": "{{request.path.[1]}}"
+      }
+    },
+    {
+      "request": {
+        "urlPath": "/templating/withtransformer"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "text/plain"
+        },
+        "body": "{{request.path.[1]}}",
+        "transformers": ["response-template"]
+      }
+    }
+  ]
+}

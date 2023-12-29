@@ -1,0 +1,22 @@
+{
+  "metadata": {
+    "description": "Examples of the 'base64' helper."
+  },
+  "request": {
+    "method": "GET",
+    "urlPattern": "/helpers/base64/\\?value=[^&]+"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "transformers": ["response-template"],
+    "jsonBody": {
+      "encoded": "{{#assign 'encoded'}}{{base64 request.query.value}}{{/assign}}{{encoded}}",
+      "decoded": "{{base64 encoded decode=true}}",
+      "encoded block": "{{#base64}}lorem{{/base64}}",
+      "decoded block": "{{#base64 decode=true}}bG9yZW0={{/base64}}"
+    }
+  }
+}

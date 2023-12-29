@@ -1,0 +1,24 @@
+{
+  "metadata": {
+    "description": "Examples of the 'contains' helper."
+  },
+  "request": {
+    "method": "GET",
+    "urlPattern": "/helpers/contains/\\?value=[^&]+"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "transformers": ["response-template"],
+    "transformerParameters": {
+      "values": ["lorem", "ipsum", "dolor", "sit", "amet"]
+    },
+    "jsonBody": {
+      "string contains": "{{#assign 'value'}}{{request.query.value}}{{/assign}}{{#contains 'lorem' value}}lorem contains {{value}}{{/contains}}",
+      "contains with if and else": "{{#if (contains 'lorem' value)}}lorem contains {{value}}{{else}}lorem does not contain {{value}}{{/if}}",
+      "array contains": "{{#contains parameters.values value}}{{parameters.values}} contains {{value}}{{/contains}}"
+    }
+  }
+}

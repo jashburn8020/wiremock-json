@@ -1,0 +1,28 @@
+{
+  "metadata": {
+    "description": "Examples of helpers to produce random values."
+  },
+  "request": {
+    "method": "GET",
+    "url": "/helpers/random/"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "transformers": ["response-template"],
+    "transformerParameters": {
+      "values": ["consectetur", "adispiscing", "elit", "mauris", "vestibulum"]
+    },
+    "jsonBody": {
+      "pick random value from inlined values": "{{pickRandom 'lorem' 'ipsum' 'dolor' 'sit' 'amet'}}",
+      "pick random value from transformer parameters": "{{pickRandom parameters.values}}",
+      "alphabetic": "{{randomValue length=9 type='ALPHABETIC'}}",
+      "numeric": "{{randomValue length=9 type='NUMERIC'}}",
+      "UUID": "{{randomValue type='UUID'}}",
+      "randomInt": "{{randomInt lower=1 upper=10}}",
+      "randomDecimal": "{{randomDecimal lower=-1.0 upper=-0.1}}"
+    }
+  }
+}

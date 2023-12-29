@@ -1,0 +1,14 @@
+{
+  "metadata": {
+    "description": "The response body file is selected dynamically using 'bodyFileName'."
+  },
+  "request": {
+    "urlPathPattern": "/templated-body-file/.*",
+    "method": "GET"
+  },
+  "response": {
+    "status": 200,
+    "bodyFileName": "{{request.pathSegments.[1]}}",
+    "transformers": ["response-template"]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "metadata": {
+    "description": "Using multiple transformer parameters along with a templated body file."
+  },
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/transformer-parameter-multiple/.*"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "transformers": ["response-template"],
+    "transformerParameters": {
+      "idToName": {
+        "1": {
+          "given": "given_1",
+          "family": "family_1"
+        },
+        "2": {
+          "given": "given_2",
+          "family": "family_2"
+        },
+        "3": {
+          "given": "given_3",
+          "family": "family_3"
+        }
+      },
+      "idToPostcode": {
+        "1": "AA1 1AA",
+        "2": "BB2 2BB",
+        "3": "CC3 3CC"
+      }
+    },
+    "bodyFileName": "transformer-parameter-file.json"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "metadata": {
+    "description": "Examples of helpers for date and time using 'now' and 'date', along with 'parseDate'."
+  },
+  "request": {
+    "method": "GET",
+    "urlPattern": "/helpers/datetime/\\?date=[^&]+"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "transformers": ["response-template"],
+    "jsonBody": {
+      "now": "{{now}}",
+      "now with format": "{{now format='HH:mm:ss'}}",
+      "now + 5 mins": "{{now offset='5 minutes' format='HH:mm:ss'}}",
+      "now + 5 mins, UNIX epoch": "{{now offset='5 minutes' format='unix'}}",
+      "date": "{{date}}",
+      "date parsed from query string": "{{date (parseDate request.query.date format='dd/MM/yyyy HH:mm:ss')}}",
+      "date with format": "{{date (parseDate request.query.date format='dd/MM/yyyy HH:mm:ss') format='HH:mm:ss'}}",
+      "date + 5 mins": "{{date (parseDate request.query.date format='dd/MM/yyyy HH:mm:ss') format='HH:mm:ss' offset='5 minutes'}}"
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "metadata": {
+    "description": "Examples of some of the conditional helpers available through the Java Handlebars implementation."
+  },
+  "mappings": [
+    {
+      "request": {
+        "method": "GET",
+        "urlPattern": "/helpers/conditional/eq/\\?id=\\d+"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "transformers": ["response-template"],
+        "jsonBody": {
+          "eq with else": "{{#assign 'id'}}{{request.query.id}}{{/assign}}{{#eq id '18'}}id is 18{{else}}id is not 18{{/eq}}",
+          "eq with multiple else": "{{#eq id '18'}}id is 18{{else eq id '19'}}id is 19{{else}}id is not 18 or 19{{/eq}}",
+          "eq rendering 'true' or 'false'": "{{eq id '18'}}",
+          "eq rendering inlined values": "{{eq id '18' yes='id is 18' no='id is not 18'}}"
+        }
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "urlPattern": "/helpers/conditional/or/\\?id=\\d+"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "transformers": ["response-template"],
+        "jsonBody": {
+          "or with else": "{{#assign 'id'}}{{request.query.id}}{{/assign}}{{#or (eq id '18') (eq id '19')}}id is 18 or 19{{else}}id is not 18 or 19{{/or}}",
+          "or rendering inlined values": "{{or (eq id '18') (eq id '19') yes='id is 18 or 19' no='id is not 18 or 19'}}"
+        }
+      }
+    }
+  ]
+}

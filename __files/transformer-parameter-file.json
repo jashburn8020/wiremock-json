@@ -1,0 +1,6 @@
+{
+  "id": "{{#assign 'id'}}{{request.query.id}}{{/assign}}{{id}}",
+  "given": "{{#with (lookup parameters.idToName id)}}{{given}}{{/with}}",
+  "family": "{{#with (lookup parameters.idToName id)}}{{family}}{{/with}}",
+  "postcode": "{{lookup parameters.idToPostcode id}}"
+}

@@ -1,0 +1,26 @@
+{
+  "metadata": {
+    "description": "Using transformer parameters with the 'lookup' helper."
+  },
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/transformer-parameter/.*"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "transformers": ["response-template"],
+    "transformerParameters": {
+      "idToName": {
+        "1": "lorem",
+        "2": "ipsum",
+        "3": "dolor"
+      }
+    },
+    "jsonBody": {
+      "username": "{{lookup parameters.idToName request.query.id}}"
+    }
+  }
+}

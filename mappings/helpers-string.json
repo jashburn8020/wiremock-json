@@ -1,0 +1,89 @@
+{
+  "metadata": {
+    "description": "Provides a demo API utilizing all the supported Handlebars String Helpers in Wiremock",
+    "blogPost": "https://blog.muya.co.ke/wiremock-response-templating-part-3/"
+  },
+  "request": {
+    "method": "GET",
+    "urlPattern": "/helpers/string/"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "transformers": ["response-template"],
+    "jsonBody": {
+      "abbreviate": "{{ abbreviate 'Truncate long sentence up to # of characters and add ellipses' 28 }}",
+      "capitalize": {
+        "capitalize first letter of all words": "{{ capitalize 'ONLY first letter capitalized' }}",
+        "capitalize first letter of all words AND lower case other characters": "{{ capitalize 'FULLY first letter capitalized' fully=true }}"
+      },
+      "capitalizeFirst": "{{ capitalizeFirst 'only first character' }}",
+      "center": {
+        "center a string": "{{ center 'centerAStringWithEmptySpaces' size=40 }}",
+        "center string with padding": "{{ center 'centerAStringWithAsteriskPadding' size=40 pad='*'  }}"
+      },
+      "cut": {
+        "remove number 7 from a string": "{{ cut 'string 7 with 7 number 7s' '7' }}",
+        "remove spaces from a string": "{{ cut 'string with spaces' }}"
+      },
+      "dateFormat": {
+        "display current date and time in custom format": "{{ dateFormat (now)  format='yyyy-MM-dd HH:mm:ss'}}",
+        "display current date in full format": "{{ dateFormat (now) format='full' }}",
+        "display current date in medium format": "{{ dateFormat (now) format='medium' }}",
+        "display current date in short format": "{{ dateFormat (now) format='short' }}",
+        "parse timestamp from value in specific format, and display in full format": "{{ dateFormat (parseDate '2021-06-21' format='yyyy-MM-dd') format='full' }}"
+      },
+      "defaultIfEmpty": {
+        "set NOTHING as value provided value is empty ": "{{ defaultIfEmpty '' 'NOTHING'  }}",
+        "set empty string if value provided is empty": "{{ defaultIfEmpty ''  }}"
+      },
+      "join": {
+        "join a list of items with custom joiner (last item in list is considered the joiner)": "{{ join 'a' 'b' 'c' '-' }}",
+        "join a list of items with custom joiner and prefix": "{{ join 'a' 'b' '-' prefix='[' }}",
+        "join a list of items with custom joiner and suffix": "{{ join 'a' 'b' '-' suffix=']' }}",
+        "join a list of items with custom joiner, prefix and suffix": "{{ join 'a' 'b' '-' prefix='[' suffix=']' }}"
+      },
+      "ljust": {
+        "left align a given string in a 30 width space": "{{ ljust 'left aligned' size=30 }}",
+        "left align a given string in a 30 width space with padding": "{{ ljust 'left aligned' size=30 pad='*' }}"
+      },
+      "lower": "{{ lower 'CHANGE VALUE TO LOWER CASE' }}",
+      "now": {
+        "display current date time": "{{ now }}",
+        "display current date time in custom format": "{{ now format='yyyy-MM-dd HH:mm:ss.SSSSSS' tz='Africa/Nairobi' }}"
+      },
+      "numberFormat": {
+        "format number in currency format": "{{ numberFormat 30 'currency' }}",
+        "format number in currency format with locale": "{{ numberFormat 30 'currency' 'fr'}}",
+        "format number in custom decimal format": "{{ numberFormat 3000000 '#,###,##0.000' }}",
+        "format number in integer format": "{{ numberFormat 30 'integer' }}",
+        "format number in percent format": "{{ numberFormat 30 'percent' }}",
+        "format number with defined maximum integer and fraction digits": "{{ numberFormat 4542.3733 maximumFractionDigits=3 maximumIntegerDigits=2 }}",
+        "format number with defined minimum integer and fraction digits": "{{ numberFormat 0.37 minimumFractionDigits=3 minimumIntegerDigits=2 }}"
+      },
+      "replace": "{{ replace 'Replaces placeholder with another string' 'another string' 'provided replacement' }}",
+      "rjust": {
+        "right align a given string in a 30 width space": "{{ rjust 'right aligned' size=30 }}",
+        "right align a given string in a 30 width space with padding": "{{ rjust 'right aligned' size=30 pad='*' }}"
+      },
+      "slugify": "{{ slugify 'Creates A Slug Useful For Blog Post URLs' }}",
+      "stringFormat": {
+        "boolean": "{{ stringFormat 'isSet: %b isNotSet: %b' 'yes' null }}",
+        "string": "{{ stringFormat 'applies %s formatting capabilities. All Java formatting options supported.' 'string' }}"
+      },
+      "stripTags": "{{ stripTags '<span>Removes all (X)HTML tags</span>' }}",
+      "substring": {
+        "substring from 3rd (exclusive) to 7th character": "{{ substring '0123456789' 3 7 }}",
+        "substring from 5th character (exclusive)": "{{ substring '0123456789' 5 }}"
+      },
+      "upper": "{{ upper 'change value to upper case' }}",
+      "yesno": {
+        "set true/false/null to yes/no/maybe": "{{ yesno true }} | {{ yesno false }} | {{ yesno null }}",
+        "set true/false/null to ndio/hapana/labda (Swahili)": "{{ yesno true yes='ndio' }} | {{ yesno false no='hapana'  }} | {{ yesno null maybe='labda' }}",
+        "set true/false/null to sí/no/quizás (Spanish)": "{{ yesno true yes='sí' }} | {{ yesno false no='no'  }} | {{ yesno null maybe='quizás' }}"
+      }
+    }
+  }
+}

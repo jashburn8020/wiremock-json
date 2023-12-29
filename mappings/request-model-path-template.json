@@ -1,0 +1,17 @@
+{
+  "metadata": {
+    "description": "URL path template: Reference path variables by name."
+  },
+  "request": {
+    "method": "GET",
+    "urlPathTemplate": "/request-model-path-template/{contactId}/addresses/{addressId}"
+  },
+  "response": {
+    "status": 200,
+    "transformers": ["response-template"],
+    "jsonBody": {
+      "request.path.contactId": "{{request.path.contactId}}",
+      "request.path.addressId": "{{request.path.addressId}}"
+    }
+  }
+}

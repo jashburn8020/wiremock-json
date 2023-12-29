@@ -1,0 +1,21 @@
+{
+  "metadata": {
+    "description": "Examples of the 'regexExtract' helper."
+  },
+  "request": {
+    "method": "GET",
+    "urlPattern": "/helpers/regexextract/\\?string=[^&]+"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "transformers": ["response-template"],
+    "jsonBody": {
+      "single value": "{{regexExtract request.query.string 're.+sum'}}",
+      "single value with default": "{{regexExtract request.query.string 'pre.+sum' default='dolor sit'}}",
+      "regex groups": "{{regexExtract request.query.string '([^ ]+) ([a-z]+)' 'lorem_parts'}}{{lorem_parts.1}} and {{lorem_parts.0}}"
+    }
+  }
+}

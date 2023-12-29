@@ -1,0 +1,20 @@
+{
+  "metadata": {
+    "description": "Examples of the 'matches' helper."
+  },
+  "request": {
+    "method": "GET",
+    "urlPattern": "/helpers/matches/\\?string=[^&]+"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "transformers": ["response-template"],
+    "jsonBody": {
+      "string matches": "{{#assign 'string'}}{{request.query.string}}{{/assign}}{{#matches string 'lor.+'}}lor.+ matches {{string}}{{/matches}}",
+      "matches with if and else": "{{#if (matches string 'l[a-z]+m')}}l[a-z]+m matches {{string}}{{else}}l[a-z]+m does not match {{string}}{{/if}}"
+    }
+  }
+}
